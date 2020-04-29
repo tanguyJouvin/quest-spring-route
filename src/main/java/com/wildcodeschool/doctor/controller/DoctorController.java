@@ -1,8 +1,5 @@
 package com.wildcodeschool.doctor.controller;
 
-import java.util.List;
-
-import com.fasterxml.jackson.databind.util.ClassUtil.Ctor;
 import com.wildcodeschool.doctor.model.Doctor;
 
 import org.springframework.http.HttpStatus;
@@ -20,7 +17,7 @@ public class DoctorController {
     @ResponseBody
     @ResponseStatus
     Doctor getDoctorByNumber(@PathVariable("number") final int number) {
-        if ( number <= 12) {
+        if ( number > 0 && number <= 12) {
             throw new ResponseStatusException(HttpStatus.FOUND, "Doctor " + number + " Found");
         } else if ( number == 13){
             return new Doctor(13, "Jodie Whittaker"); 
